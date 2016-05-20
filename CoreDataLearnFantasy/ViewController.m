@@ -11,6 +11,7 @@
 #import "common.h"
 
 #import "OneModleController.h"
+#import "PlayAndDownloadAudioController.h"
 
 @interface ViewController ()
 
@@ -41,12 +42,13 @@
   CGFloat buttonH = 40;
   CGFloat buttonX = 20;
   CGFloat buttonW = kScreenWidth - 2 * buttonX;
+  
   for (int i = 0; i<array.count; i++) {
     
     UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [button setTitle:array[i] forState:UIControlStateNormal];
-    button.frame = CGRectMake(buttonX, i*buttonH+20 + 64, buttonW, buttonH);
+    button.frame = CGRectMake(buttonX, 64 + i*buttonH, buttonW, buttonH);
     button.tag = 100+i;
     button.backgroundColor = [UIColor greenColor];
     [button addTarget:self action:@selector(clickButton:) forControlEvents:UIControlEventTouchUpInside];
@@ -54,7 +56,6 @@
     
   }
   
-
 }
 
 - (void)clickButton:(UIButton *)button{
@@ -70,7 +71,8 @@
       break;
     case 101:{
       
-      
+      PlayAndDownloadAudioController * pdVC = [[PlayAndDownloadAudioController alloc]init];
+      [self.navigationController pushViewController:pdVC animated:YES];
       
     }
       break;

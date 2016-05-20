@@ -22,6 +22,11 @@
 		9AFE4B3A1CEEADCD000DC1DC /* PersonCoreDataTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFE4B391CEEADCD000DC1DC /* PersonCoreDataTool.m */; };
 		9AFE4B3F1CEEE138000DC1DC /* EditController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFE4B3E1CEEE138000DC1DC /* EditController.m */; };
 		9AFE4B421CEEE171000DC1DC /* OneModleController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFE4B411CEEE171000DC1DC /* OneModleController.m */; };
+		9AFE4B461CEEF339000DC1DC /* PlayAndDownloadAudioController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFE4B451CEEF339000DC1DC /* PlayAndDownloadAudioController.m */; };
+		9AFE4B491CEEF34D000DC1DC /* AddDownloadTaskController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFE4B481CEEF34D000DC1DC /* AddDownloadTaskController.m */; };
+		9AFE4B4D1CEEF3FB000DC1DC /* DownloadItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFE4B4C1CEEF3FB000DC1DC /* DownloadItemModel.m */; };
+		9AFE4B501CEEF425000DC1DC /* WaitToDownloadModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFE4B4F1CEEF425000DC1DC /* WaitToDownloadModel.m */; };
+		9AFE4B541CEF0334000DC1DC /* DownloadTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFE4B531CEF0334000DC1DC /* DownloadTool.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +78,16 @@
 		9AFE4B3E1CEEE138000DC1DC /* EditController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditController.m; sourceTree = "<group>"; };
 		9AFE4B401CEEE171000DC1DC /* OneModleController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OneModleController.h; sourceTree = "<group>"; };
 		9AFE4B411CEEE171000DC1DC /* OneModleController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OneModleController.m; sourceTree = "<group>"; };
+		9AFE4B441CEEF339000DC1DC /* PlayAndDownloadAudioController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayAndDownloadAudioController.h; sourceTree = "<group>"; };
+		9AFE4B451CEEF339000DC1DC /* PlayAndDownloadAudioController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayAndDownloadAudioController.m; sourceTree = "<group>"; };
+		9AFE4B471CEEF34D000DC1DC /* AddDownloadTaskController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddDownloadTaskController.h; sourceTree = "<group>"; };
+		9AFE4B481CEEF34D000DC1DC /* AddDownloadTaskController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddDownloadTaskController.m; sourceTree = "<group>"; };
+		9AFE4B4B1CEEF3FB000DC1DC /* DownloadItemModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadItemModel.h; sourceTree = "<group>"; };
+		9AFE4B4C1CEEF3FB000DC1DC /* DownloadItemModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadItemModel.m; sourceTree = "<group>"; };
+		9AFE4B4E1CEEF425000DC1DC /* WaitToDownloadModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaitToDownloadModel.h; sourceTree = "<group>"; };
+		9AFE4B4F1CEEF425000DC1DC /* WaitToDownloadModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaitToDownloadModel.m; sourceTree = "<group>"; };
+		9AFE4B521CEF0334000DC1DC /* DownloadTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadTool.h; sourceTree = "<group>"; };
+		9AFE4B531CEF0334000DC1DC /* DownloadTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadTool.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,8 +228,34 @@
 		9AFE4B431CEEE5A7000DC1DC /* OneModelAndAudioCoreData */ = {
 			isa = PBXGroup;
 			children = (
+				9AFE4B511CEF0314000DC1DC /* DownloadTool */,
+				9AFE4B4A1CEEF3C7000DC1DC /* AudioModel */,
+				9AFE4B441CEEF339000DC1DC /* PlayAndDownloadAudioController.h */,
+				9AFE4B451CEEF339000DC1DC /* PlayAndDownloadAudioController.m */,
+				9AFE4B471CEEF34D000DC1DC /* AddDownloadTaskController.h */,
+				9AFE4B481CEEF34D000DC1DC /* AddDownloadTaskController.m */,
 			);
 			path = OneModelAndAudioCoreData;
+			sourceTree = "<group>";
+		};
+		9AFE4B4A1CEEF3C7000DC1DC /* AudioModel */ = {
+			isa = PBXGroup;
+			children = (
+				9AFE4B4B1CEEF3FB000DC1DC /* DownloadItemModel.h */,
+				9AFE4B4C1CEEF3FB000DC1DC /* DownloadItemModel.m */,
+				9AFE4B4E1CEEF425000DC1DC /* WaitToDownloadModel.h */,
+				9AFE4B4F1CEEF425000DC1DC /* WaitToDownloadModel.m */,
+			);
+			path = AudioModel;
+			sourceTree = "<group>";
+		};
+		9AFE4B511CEF0314000DC1DC /* DownloadTool */ = {
+			isa = PBXGroup;
+			children = (
+				9AFE4B521CEF0334000DC1DC /* DownloadTool.h */,
+				9AFE4B531CEF0334000DC1DC /* DownloadTool.m */,
+			);
+			path = DownloadTool;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -348,14 +389,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				9AC5B7611CED6C8100F445E8 /* PersonEntity+CoreDataProperties.m in Sources */,
+				9AFE4B501CEEF425000DC1DC /* WaitToDownloadModel.m in Sources */,
 				9AFE4B3A1CEEADCD000DC1DC /* PersonCoreDataTool.m in Sources */,
+				9AFE4B4D1CEEF3FB000DC1DC /* DownloadItemModel.m in Sources */,
 				9AC5B75B1CED6BB800F445E8 /* PersonModel.xcdatamodeld in Sources */,
 				9AC5B7221CED62A600F445E8 /* ViewController.m in Sources */,
 				9AFE4B421CEEE171000DC1DC /* OneModleController.m in Sources */,
 				9AC5B7571CED67E200F445E8 /* UIView+WKFFrame.m in Sources */,
+				9AFE4B491CEEF34D000DC1DC /* AddDownloadTaskController.m in Sources */,
+				9AFE4B541CEF0334000DC1DC /* DownloadTool.m in Sources */,
 				9AFE4B3F1CEEE138000DC1DC /* EditController.m in Sources */,
 				9AC5B7641CED6CB800F445E8 /* PersonEntity.m in Sources */,
 				9AC5B71F1CED62A600F445E8 /* AppDelegate.m in Sources */,
+				9AFE4B461CEEF339000DC1DC /* PlayAndDownloadAudioController.m in Sources */,
 				9AC5B71C1CED62A600F445E8 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

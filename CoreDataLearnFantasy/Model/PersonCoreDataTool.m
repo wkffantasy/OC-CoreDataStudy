@@ -81,6 +81,7 @@
   if (_persistenStoreCoordinatoe == nil) {
     _persistenStoreCoordinatoe = [[NSPersistentStoreCoordinator alloc]initWithManagedObjectModel:self.managedObjectModel];
     NSURL * url = [[self applicationDocumentURL] URLByAppendingPathComponent:@"myLearnCoreData.db"];
+    
     [_persistenStoreCoordinatoe addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:url options:nil error:nil];
   }
   
@@ -89,6 +90,8 @@
 
 
 - (NSURL *) applicationDocumentURL {
+  
+  //file:///Users/fantasy/Library/Developer/CoreSimulator/Devices/C66B8C6E-5BA5-4AE1-B257-DD59AA14A6F5/data/Containers/Data/Application/6EE03B22-0C5B-475F-9A1F-FBCFDE4D39C0/Documents/
   return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
@@ -105,7 +108,7 @@
 - (void)savePersonEntity:(PersonEntity *)entity succeccBlock:(HandleSuccessBlock)success andFailedBlock:(HandleFailedBlock)failed{
   
   if ([self isHaveThisPersonEntity:entity.personId]) {
-    //TODO: (fantasy) add failed but appear in controller
+    
     [self.managedObjectContext deleteObject:entity];
     if (failed) {
       failed(@"保存失败，已经有这个id的实体对象了");
