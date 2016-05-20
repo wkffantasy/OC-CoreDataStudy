@@ -15,12 +15,13 @@
 		9AC5B72A1CED62A600F445E8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AC5B7281CED62A600F445E8 /* LaunchScreen.storyboard */; };
 		9AC5B7351CED62A600F445E8 /* CoreDataLearnFantasyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC5B7341CED62A600F445E8 /* CoreDataLearnFantasyTests.m */; };
 		9AC5B7401CED62A600F445E8 /* CoreDataLearnFantasyUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC5B73F1CED62A600F445E8 /* CoreDataLearnFantasyUITests.m */; };
-		9AC5B7511CED649900F445E8 /* EditController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC5B7501CED649900F445E8 /* EditController.m */; };
 		9AC5B7571CED67E200F445E8 /* UIView+WKFFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC5B7561CED67E200F445E8 /* UIView+WKFFrame.m */; };
 		9AC5B75B1CED6BB800F445E8 /* PersonModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9AC5B7591CED6BB800F445E8 /* PersonModel.xcdatamodeld */; };
 		9AC5B7611CED6C8100F445E8 /* PersonEntity+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC5B7601CED6C8100F445E8 /* PersonEntity+CoreDataProperties.m */; };
 		9AC5B7641CED6CB800F445E8 /* PersonEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC5B7631CED6CB800F445E8 /* PersonEntity.m */; };
 		9AFE4B3A1CEEADCD000DC1DC /* PersonCoreDataTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFE4B391CEEADCD000DC1DC /* PersonCoreDataTool.m */; };
+		9AFE4B3F1CEEE138000DC1DC /* EditController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFE4B3E1CEEE138000DC1DC /* EditController.m */; };
+		9AFE4B421CEEE171000DC1DC /* OneModleController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFE4B411CEEE171000DC1DC /* OneModleController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,8 +58,6 @@
 		9AC5B73B1CED62A600F445E8 /* CoreDataLearnFantasyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreDataLearnFantasyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AC5B73F1CED62A600F445E8 /* CoreDataLearnFantasyUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreDataLearnFantasyUITests.m; sourceTree = "<group>"; };
 		9AC5B7411CED62A600F445E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9AC5B74F1CED649900F445E8 /* EditController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditController.h; sourceTree = "<group>"; };
-		9AC5B7501CED649900F445E8 /* EditController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditController.m; sourceTree = "<group>"; };
 		9AC5B7531CED67CF00F445E8 /* common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
 		9AC5B7551CED67E200F445E8 /* UIView+WKFFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WKFFrame.h"; sourceTree = "<group>"; };
 		9AC5B7561CED67E200F445E8 /* UIView+WKFFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WKFFrame.m"; sourceTree = "<group>"; };
@@ -70,6 +69,10 @@
 		9AFE4B381CEEADCD000DC1DC /* PersonCoreDataTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonCoreDataTool.h; sourceTree = "<group>"; };
 		9AFE4B391CEEADCD000DC1DC /* PersonCoreDataTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonCoreDataTool.m; sourceTree = "<group>"; };
 		9AFE4B3B1CEEB935000DC1DC /* AllNonificationNames.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AllNonificationNames.h; sourceTree = "<group>"; };
+		9AFE4B3D1CEEE138000DC1DC /* EditController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditController.h; sourceTree = "<group>"; };
+		9AFE4B3E1CEEE138000DC1DC /* EditController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditController.m; sourceTree = "<group>"; };
+		9AFE4B401CEEE171000DC1DC /* OneModleController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OneModleController.h; sourceTree = "<group>"; };
+		9AFE4B411CEEE171000DC1DC /* OneModleController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OneModleController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,10 +123,11 @@
 		9AC5B7191CED62A600F445E8 /* CoreDataLearnFantasy */ = {
 			isa = PBXGroup;
 			children = (
+				9AFE4B431CEEE5A7000DC1DC /* OneModelAndAudioCoreData */,
+				9AFE4B3C1CEEE105000DC1DC /* OneModelCoreData */,
 				9AC5B7581CED6B8700F445E8 /* Model */,
 				9AC5B7541CED67E200F445E8 /* Category */,
 				9AC5B7521CED678D00F445E8 /* Common */,
-				9AC5B74D1CED643700F445E8 /* EditNewPerson */,
 				9AC5B71D1CED62A600F445E8 /* AppDelegate.h */,
 				9AC5B71E1CED62A600F445E8 /* AppDelegate.m */,
 				9AC5B7201CED62A600F445E8 /* ViewController.h */,
@@ -163,23 +167,6 @@
 			path = CoreDataLearnFantasyUITests;
 			sourceTree = "<group>";
 		};
-		9AC5B74D1CED643700F445E8 /* EditNewPerson */ = {
-			isa = PBXGroup;
-			children = (
-				9AC5B74E1CED646C00F445E8 /* controller */,
-			);
-			path = EditNewPerson;
-			sourceTree = "<group>";
-		};
-		9AC5B74E1CED646C00F445E8 /* controller */ = {
-			isa = PBXGroup;
-			children = (
-				9AC5B74F1CED649900F445E8 /* EditController.h */,
-				9AC5B7501CED649900F445E8 /* EditController.m */,
-			);
-			path = controller;
-			sourceTree = "<group>";
-		};
 		9AC5B7521CED678D00F445E8 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -210,6 +197,24 @@
 				9AFE4B391CEEADCD000DC1DC /* PersonCoreDataTool.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		9AFE4B3C1CEEE105000DC1DC /* OneModelCoreData */ = {
+			isa = PBXGroup;
+			children = (
+				9AFE4B3D1CEEE138000DC1DC /* EditController.h */,
+				9AFE4B3E1CEEE138000DC1DC /* EditController.m */,
+				9AFE4B401CEEE171000DC1DC /* OneModleController.h */,
+				9AFE4B411CEEE171000DC1DC /* OneModleController.m */,
+			);
+			path = OneModelCoreData;
+			sourceTree = "<group>";
+		};
+		9AFE4B431CEEE5A7000DC1DC /* OneModelAndAudioCoreData */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = OneModelAndAudioCoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -346,8 +351,9 @@
 				9AFE4B3A1CEEADCD000DC1DC /* PersonCoreDataTool.m in Sources */,
 				9AC5B75B1CED6BB800F445E8 /* PersonModel.xcdatamodeld in Sources */,
 				9AC5B7221CED62A600F445E8 /* ViewController.m in Sources */,
+				9AFE4B421CEEE171000DC1DC /* OneModleController.m in Sources */,
 				9AC5B7571CED67E200F445E8 /* UIView+WKFFrame.m in Sources */,
-				9AC5B7511CED649900F445E8 /* EditController.m in Sources */,
+				9AFE4B3F1CEEE138000DC1DC /* EditController.m in Sources */,
 				9AC5B7641CED6CB800F445E8 /* PersonEntity.m in Sources */,
 				9AC5B71F1CED62A600F445E8 /* AppDelegate.m in Sources */,
 				9AC5B71C1CED62A600F445E8 /* main.m in Sources */,
