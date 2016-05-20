@@ -38,6 +38,7 @@ _Pragma("clang diagnostic pop")
 // all import
 #import "UIView+WKFFrame.h"
 #import "PersonEntity.h"
+#import "AllNonificationNames.h"
 
 
 #endif /* common_h */

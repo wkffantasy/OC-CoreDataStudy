@@ -23,19 +23,6 @@
 
 @implementation ViewController
 
-- (void)viewWillAppear:(BOOL)animated{
-  
-  [super viewWillAppear:animated];
-  
-  if (_dataArray != [[PersonCoreDataTool shareInstance] fecthAllPersonEntity]) {
-    
-    _dataArray = [[PersonCoreDataTool shareInstance] fecthAllPersonEntity];
-    [self.tableView reloadData];
-    NSLog(@"self.tableView reloadData");
-  }
-  
-}
-
 - (void)viewDidLoad {
   
   [super viewDidLoad];
@@ -45,6 +32,17 @@
   [self setNavigation];
   
   [self setupTableViews];
+  
+  [self needReloadData];
+  
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(needReloadData) name:kPersonEntityCoreDataChangeNonification object:nil];
+  
+}
+
+- (void)needReloadData{
+  
+  _dataArray = [[PersonCoreDataTool shareInstance] fecthAllPersonEntity];
+  [self.tableView reloadData];
   
 }
 
@@ -82,6 +80,47 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
   
   PersonEntity * entity = self.dataArray[indexPath.row];
+
+  //改
+//  entity.name = @"电脑";
+//  [[PersonCoreDataTool shareInstance] saveContext];
+  
+  //查
+  [[PersonCoreDataTool shareInstance] fetchAnPersonEntityAccordingID:entity.personId succeccBlock:^(PersonEntity *newEntity){
+    
+    NSLog(@"fetch success %@",newEntity.name);
+    
+  } andFailedBlock:^(NSString *failedString) {
+    
+    NSLog(@"fetch failed %@",failedString);
+    
+  }];
+//  if ([[PersonCoreDataTool shareInstance] isHaveThisPersonEntity:entity.personId]) {
+//    
+//    NSLog(@"isHave");
+//    
+//  } else {
+//    
+//    NSLog(@"isNotHave");
+//    
+//  }
+  
+  //删除
+//  [[PersonCoreDataTool shareInstance] deletePersonEntity:entity succeccBlock:^{
+//    NSLog(@"delete success");
+//  } andFailedBlock:^(NSString *failedString) {
+//    NSLog(@"delete failed %@",failedString);
+//  }];
+  
+//  [[PersonCoreDataTool shareInstance] deletePersonEntityAccordingID:entity.personId succeccBlock:^{
+//    
+//    NSLog(@"delete success");
+//    
+//  } andFailedBlock:^(NSString *failedString) {
+//    
+//    NSLog(@"delete failed %@",failedString);
+//    
+//  }];
   
 }
 

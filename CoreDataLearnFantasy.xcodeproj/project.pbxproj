@@ -69,6 +69,7 @@
 		9AC5B7631CED6CB800F445E8 /* PersonEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonEntity.m; sourceTree = "<group>"; };
 		9AFE4B381CEEADCD000DC1DC /* PersonCoreDataTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonCoreDataTool.h; sourceTree = "<group>"; };
 		9AFE4B391CEEADCD000DC1DC /* PersonCoreDataTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonCoreDataTool.m; sourceTree = "<group>"; };
+		9AFE4B3B1CEEB935000DC1DC /* AllNonificationNames.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AllNonificationNames.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				9AC5B7531CED67CF00F445E8 /* common.h */,
+				9AFE4B3B1CEEB935000DC1DC /* AllNonificationNames.h */,
 			);
 			path = Common;
 			sourceTree = "<group>";

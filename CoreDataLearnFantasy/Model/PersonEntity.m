@@ -8,11 +8,7 @@
 
 #import "PersonEntity.h"
 
-
-
 @interface PersonEntity ()
-
-
 
 @end
 
@@ -24,6 +20,7 @@
   return NSStringFromClass([self class]);
   
 }
+
 + (instancetype)instanceNewObjectWithContext:(NSManagedObjectContext *)managedObjectContext{
   
   return [NSEntityDescription insertNewObjectForEntityForName:[self entityName] inManagedObjectContext:managedObjectContext];
