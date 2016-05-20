@@ -10,14 +10,19 @@
 
 #import <CoreData/CoreData.h>
 
+#import "PersonCoreDataTool.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface PersonEntity : NSManagedObject
+
++ (NSString *)entityName;
+
++ (instancetype)setUpNewObject;
 
 @end
 
 NS_ASSUME_NONNULL_END
 
 #import "PersonEntity+CoreDataProperties.h"
-#import "NSManagedObject+PersonObject.h"
+

@@ -20,8 +20,7 @@
 		9AC5B75B1CED6BB800F445E8 /* PersonModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9AC5B7591CED6BB800F445E8 /* PersonModel.xcdatamodeld */; };
 		9AC5B7611CED6C8100F445E8 /* PersonEntity+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC5B7601CED6C8100F445E8 /* PersonEntity+CoreDataProperties.m */; };
 		9AC5B7641CED6CB800F445E8 /* PersonEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC5B7631CED6CB800F445E8 /* PersonEntity.m */; };
-		9AC5B7681CED8A6D00F445E8 /* NSManagedObject+PersonObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC5B7671CED8A6D00F445E8 /* NSManagedObject+PersonObject.m */; };
-		9AC5B76B1CED8B5E00F445E8 /* PersonCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC5B76A1CED8B5E00F445E8 /* PersonCoreDataManager.m */; };
+		9AFE4B3A1CEEADCD000DC1DC /* PersonCoreDataTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFE4B391CEEADCD000DC1DC /* PersonCoreDataTool.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,10 +67,8 @@
 		9AC5B7601CED6C8100F445E8 /* PersonEntity+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PersonEntity+CoreDataProperties.m"; sourceTree = "<group>"; };
 		9AC5B7621CED6CB800F445E8 /* PersonEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonEntity.h; sourceTree = "<group>"; };
 		9AC5B7631CED6CB800F445E8 /* PersonEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonEntity.m; sourceTree = "<group>"; };
-		9AC5B7661CED8A6D00F445E8 /* NSManagedObject+PersonObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+PersonObject.h"; sourceTree = "<group>"; };
-		9AC5B7671CED8A6D00F445E8 /* NSManagedObject+PersonObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+PersonObject.m"; sourceTree = "<group>"; };
-		9AC5B7691CED8B5E00F445E8 /* PersonCoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonCoreDataManager.h; sourceTree = "<group>"; };
-		9AC5B76A1CED8B5E00F445E8 /* PersonCoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonCoreDataManager.m; sourceTree = "<group>"; };
+		9AFE4B381CEEADCD000DC1DC /* PersonCoreDataTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonCoreDataTool.h; sourceTree = "<group>"; };
+		9AFE4B391CEEADCD000DC1DC /* PersonCoreDataTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonCoreDataTool.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,10 +204,8 @@
 				9AC5B7601CED6C8100F445E8 /* PersonEntity+CoreDataProperties.m */,
 				9AC5B7621CED6CB800F445E8 /* PersonEntity.h */,
 				9AC5B7631CED6CB800F445E8 /* PersonEntity.m */,
-				9AC5B7661CED8A6D00F445E8 /* NSManagedObject+PersonObject.h */,
-				9AC5B7671CED8A6D00F445E8 /* NSManagedObject+PersonObject.m */,
-				9AC5B7691CED8B5E00F445E8 /* PersonCoreDataManager.h */,
-				9AC5B76A1CED8B5E00F445E8 /* PersonCoreDataManager.m */,
+				9AFE4B381CEEADCD000DC1DC /* PersonCoreDataTool.h */,
+				9AFE4B391CEEADCD000DC1DC /* PersonCoreDataTool.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -346,11 +341,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				9AC5B7611CED6C8100F445E8 /* PersonEntity+CoreDataProperties.m in Sources */,
-				9AC5B76B1CED8B5E00F445E8 /* PersonCoreDataManager.m in Sources */,
+				9AFE4B3A1CEEADCD000DC1DC /* PersonCoreDataTool.m in Sources */,
 				9AC5B75B1CED6BB800F445E8 /* PersonModel.xcdatamodeld in Sources */,
 				9AC5B7221CED62A600F445E8 /* ViewController.m in Sources */,
 				9AC5B7571CED67E200F445E8 /* UIView+WKFFrame.m in Sources */,
-				9AC5B7681CED8A6D00F445E8 /* NSManagedObject+PersonObject.m in Sources */,
 				9AC5B7511CED649900F445E8 /* EditController.m in Sources */,
 				9AC5B7641CED6CB800F445E8 /* PersonEntity.m in Sources */,
 				9AC5B71F1CED62A600F445E8 /* AppDelegate.m in Sources */,

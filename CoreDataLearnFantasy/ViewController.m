@@ -11,15 +11,13 @@
 //controller
 #import "EditController.h"
 #import "Common.h"
-#import "PersonCoreDataManager.h"
-#import "PersonEntity+CoreDataProperties.h"
-#import "NSManagedObject+PersonObject.h"
+
+
 
 @interface ViewController ()<NSFetchedResultsControllerDelegate,UITableViewDelegate,UITableViewDataSource>
 
-@property (strong, nonatomic) NSFetchedResultsController * fetchedResultsController;
-
 @property (weak, nonatomic) UITableView * tableView;
+@property (strong, nonatomic) NSArray * dataArray;
 
 @end
 
@@ -28,7 +26,13 @@
 - (void)viewWillAppear:(BOOL)animated{
   
   [super viewWillAppear:animated];
-  [self.tableView reloadData];
+  
+  if (_dataArray != [[PersonCoreDataTool shareInstance] fecthAllPersonEntity]) {
+    
+    _dataArray = [[PersonCoreDataTool shareInstance] fecthAllPersonEntity];
+    [self.tableView reloadData];
+    NSLog(@"self.tableView reloadData");
+  }
   
 }
 
@@ -57,7 +61,7 @@
 #pragma mark - UITableViewDelegate,UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
   
-  return self.fetchedResultsController.fetchedObjects.count;
+  return self.dataArray.count;
   
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -67,13 +71,20 @@
   if (cell == nil) {
     cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellId];
   }
-  PersonEntity * entity = self.fetchedResultsController.fetchedObjects[indexPath.row];
+  PersonEntity * entity = self.dataArray[indexPath.row];
   cell.textLabel.text = [NSString stringWithFormat:@"name=%@,id=%@",entity.name,entity.personId];
   cell.detailTextLabel.text = entity.phone;
   
   return cell;
   
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+  
+  PersonEntity * entity = self.dataArray[indexPath.row];
+  
+}
+
 
 - (void)setNavigation{
   
@@ -91,37 +102,6 @@
 
 
 
-#pragma mark - fetchedResultsController代理方法
-- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath{
-  
-  for (PersonEntity * entity in self.fetchedResultsController.fetchedObjects) {
-    NSLog(@"名字==%@",entity.name);
-  }
-  
-}
 
-- (NSFetchedResultsController *)fetchedResultsController{
-  
-  if (_fetchedResultsController == nil) {
-    
-    NSFetchRequest * request = [[NSFetchRequest alloc]initWithEntityName:[PersonEntity entityName]];
-    
-    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"personId" ascending:YES];
-    [request setSortDescriptors:[NSArray arrayWithObject:sortDescriptor]];
-    
-    _fetchedResultsController = [[NSFetchedResultsController alloc]initWithFetchRequest:request managedObjectContext:[PersonCoreDataManager shareInstance].managedObjectContext sectionNameKeyPath:@"name" cacheName:nil];
-    
-    _fetchedResultsController.delegate = self;
-    
-    NSError * error;
-    [_fetchedResultsController performFetch:&error];
-    if (error != nil) {
-      NSLog(@"执行查询有错误%@",error);
-    }
-    
-  }
-  return _fetchedResultsController;
-  
-}
 
 @end

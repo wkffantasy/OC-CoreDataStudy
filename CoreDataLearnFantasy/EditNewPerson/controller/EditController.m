@@ -62,11 +62,12 @@
   NSAssert(_idTextField.text.length > 0, @"");
   
 #warning  数据库的增
-  PersonEntity * entity = [PersonEntity instanceObject];
-  entity.name = self.nameTextField.text;
+  PersonEntity * entity = [PersonEntity setUpNewObject];
+  [entity setValue:self.nameTextField.text forKey:@"name"];
   entity.phone = self.phoneTextField.text;
   entity.personId = self.idTextField.text;
-  [entity save];
+  [[PersonCoreDataTool shareInstance] saveContext];
+  
   [self.navigationController popViewControllerAnimated:YES];
   
 }
