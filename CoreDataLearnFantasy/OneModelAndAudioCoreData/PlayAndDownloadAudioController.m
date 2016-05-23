@@ -9,8 +9,14 @@
 #import "PlayAndDownloadAudioController.h"
 
 #import "DownloadTool.h"
+#import "AudioCoreDataTool.h"
+#import "common.h"
+
+#import "AudioEntity.h"
 
 @interface PlayAndDownloadAudioController ()
+
+
 
 @end
 
@@ -20,32 +26,51 @@
   
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-  //http://sc.111ttt.com/up/mp3/186020/111C438ED73884CDFF9EC4C687E90C78.mp3
-  //发如雪
-  dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+  
+  AudioEntity * audio = [AudioEntity setUpNewObject];
+  audio.audioName = @"发如雪";
+  audio.audioUrl  = @"http://sc.111ttt.com/up/mp3/186020/111C438ED73884CDFF9EC4C687E90C78.mp3";
+  
+  [[AudioCoreDataTool shareInstance] saveAudioEntity:audio succeccBlock:^{
+   
+    NSLog(@"add audioEntity seccess");
     
-    DownloadTool * tool = [[DownloadTool alloc]initWithUrl:@"http://sc.111ttt.com/up/mp3/186020/111C438ED73884CDFF9EC4C687E90C78.mp3"];
-    tool.finishedBlock = ^{
+  } andFailedBlock:^(NSString *failedString) {
     
-      NSLog(@"finished");
-      
-    };
+    NSLog(@"failedString %@",failedString);
     
-    tool.downloadingBlock = ^(int64_t alreadyDownload,int64_t totalCount){
-      
-      NSLog(@"progress = %f",(double)alreadyDownload/totalCount);
-      
-    };
-    tool.failedBlock = ^(NSError *error){
+  }];
+  
+}
+
+- (void)beganToDownload:(AudioEntity *)audio{
+  
+  DownloadTool * tool = [[DownloadTool alloc]initWithUrl:audio.audioUrl andFileName:audio.audioName];
+  tool.finishedBlock = ^(DownloadTool * finishedDownloadTool){
     
-      NSLog(@"error %@",error.localizedDescription);
-      
-    };
+    audio.audioLocalPath = finishedDownloadTool.localPath;
     
-    [tool startDownload];
+  };
+  
+  tool.pauseBlock = ^(NSData * resume){
     
+    audio.audioDownloadResumeData = resume;
     
-  });
+  };
+  
+  tool.downloadingBlock = ^(int64_t alreadyDownload,int64_t totalCount){
+    
+    NSLog(@"progress = %f",(double)alreadyDownload/totalCount);
+    audio.audioDownloadProgress = @((double)alreadyDownload/totalCount);
+    
+  };
+  tool.failedBlock = ^(NSError *error){
+    
+    NSLog(@"error %@",error.localizedDescription);
+    
+  };
+  
+  [tool startDownload];
   
 }
 

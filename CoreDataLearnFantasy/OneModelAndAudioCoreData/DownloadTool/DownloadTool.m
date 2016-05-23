@@ -11,13 +11,14 @@
 
 @interface DownloadTool ()<NSURLSessionDownloadDelegate>
 
-@property (copy, nonatomic) NSString * downloadUrl;
+
 
 @property (strong, nonatomic) NSURLSessionDownloadTask* downloadTask;
 
 @property (strong, nonatomic) NSURLSession* session;
 
 @property (copy, nonatomic) NSString * filePath;
+
 
 @end
 
@@ -28,7 +29,7 @@
   return [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:@"AllMyAudio"];
 }
 
-- (instancetype)initWithUrl:(NSString *)downloadUrl{
+- (instancetype)initWithUrl:(NSString *)downloadUrl andFileName:(NSString *)name{
   
   if (self = [super init]) {
     
@@ -41,18 +42,20 @@
     NSError * error;
     if (![mgr fileExistsAtPath:_filePath]) {
       
-      [mgr createDirectoryAtPath:_localPath withIntermediateDirectories:YES attributes:nil error:&error];
+      [mgr createDirectoryAtPath:_filePath withIntermediateDirectories:YES attributes:nil error:&error];
       
     }
     
     if (error) {
-      //TODO: (fantasy) always failed
+
       NSLog(@"create failed  %@",error.localizedDescription);
     }
     
-    _localPath = [_filePath stringByAppendingPathComponent:downloadUrl];
     
     _downloadUrl = downloadUrl;
+    _fileName    = name;
+    _localPath = [NSString stringWithFormat:@"%@/%@.mp3",_filePath,name];
+    
     self.downloadStatus = DownloadStatusNotBegan;
     NSURLSessionConfiguration *cfg = [NSURLSessionConfiguration defaultSessionConfiguration];
     _session = [NSURLSession sessionWithConfiguration:cfg delegate:self delegateQueue:[NSOperationQueue mainQueue]];
@@ -69,6 +72,7 @@
   self.downloadTask = [self.session downloadTaskWithURL:[NSURL URLWithString:self.downloadUrl]];
   self.downloadStatus = DownloadStatusDoing;
   [self.downloadTask resume];
+  
   
 }
 
@@ -93,6 +97,10 @@
     self.resumeData = resumeData;
     self.downloadTask = nil;
     
+    if (_pauseBlock) {
+      self.pauseBlock(self.resumeData);
+    }
+    
   }];
   
 }
@@ -102,13 +110,30 @@
 //下载完成
 - (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location{
   
+  NSAssert(_localPath.length > 0, @"");
   self.downloadStatus = DownloadStatusHaveFinished;
-  
   NSFileManager * mgr = [NSFileManager defaultManager];
-  [mgr moveItemAtPath:location.path toPath:_localPath error:nil];
+  NSError * removeError ;
+  //如果该路径下文件已经存在 删除
+  if ([mgr fileExistsAtPath:_localPath]) {
+    [mgr removeItemAtPath:_localPath error:&removeError];
+    
+  }
+  if (removeError) {
+    NSLog(@"already exist remove faile %@",removeError.localizedDescription);
+  }
+  
+  NSError * error ;
+  [mgr moveItemAtPath:location.path toPath:_localPath error:&error];
+  if (error) {
+    
+    NSLog(@"move failed %@",error.localizedDescription);
+    
+  }
   
   if (self.finishedBlock) {
-    self.finishedBlock();
+    
+    self.finishedBlock(self);
   }
   
 }

@@ -91,7 +91,6 @@
 
 - (NSURL *) applicationDocumentURL {
   
-  //file:///Users/fantasy/Library/Developer/CoreSimulator/Devices/C66B8C6E-5BA5-4AE1-B257-DD59AA14A6F5/data/Containers/Data/Application/6EE03B22-0C5B-475F-9A1F-FBCFDE4D39C0/Documents/
   return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
 

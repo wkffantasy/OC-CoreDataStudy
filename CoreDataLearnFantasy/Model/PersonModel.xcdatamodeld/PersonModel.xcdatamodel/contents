@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15B42" minimumToolsVersion="Xcode 7.0">
-    <entity name="AudioEntity" syncable="YES">
+    <entity name="AudioEntity" representedClassName="AudioEntity" syncable="YES">
+        <attribute name="audioDownloadProgress" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="audioDownloadResumeData" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="audioLocalPath" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="audioName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="audioUrl" optional="YES" attributeType="String" syncable="YES"/>
@@ -11,7 +13,7 @@
         <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="AudioEntity" positionX="-63" positionY="9" width="128" height="90"/>
+        <element name="AudioEntity" positionX="-63" positionY="9" width="128" height="120"/>
         <element name="PersonEntity" positionX="-63" positionY="-18" width="128" height="90"/>
     </elements>
 </model>
