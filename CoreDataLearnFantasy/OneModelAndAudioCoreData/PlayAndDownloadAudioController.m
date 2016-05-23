@@ -43,9 +43,15 @@
   
 }
 
+
+
 - (void)beganToDownload:(AudioEntity *)audio{
   
   DownloadTool * tool = [[DownloadTool alloc]initWithUrl:audio.audioUrl andFileName:audio.audioName];
+  /**
+   audio.audioName = @"发如雪";
+   audio.audioUrl  = @"http://sc.111ttt.com/up/mp3/186020/111C438ED73884CDFF9EC4C687E90C78.mp3";
+   */
   tool.finishedBlock = ^(DownloadTool * finishedDownloadTool){
     
     audio.audioLocalPath = finishedDownloadTool.localPath;
