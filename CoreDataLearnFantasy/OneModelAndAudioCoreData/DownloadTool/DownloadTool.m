@@ -29,7 +29,7 @@
   return [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:@"AllMyAudio"];
 }
 
-- (instancetype)initWithUrl:(NSString *)downloadUrl andFileName:(NSString *)name{
+- (instancetype)initWithUrl:(NSString *)downloadUrl andFileName:(NSString *)name andResumeData:(NSData *)resumeData{
   
   if (self = [super init]) {
     
@@ -54,6 +54,7 @@
     
     _downloadUrl = downloadUrl;
     _fileName    = name;
+    _resumeData  = resumeData;
     _localPath = [NSString stringWithFormat:@"%@/%@.mp3",_filePath,name];
     
     self.downloadStatus = DownloadStatusNotBegan;
@@ -65,24 +66,17 @@
   
 }
 
-
-
 - (void)startDownload{
   
-  self.downloadTask = [self.session downloadTaskWithURL:[NSURL URLWithString:self.downloadUrl]];
+  if (self.resumeData) {
+    self.downloadTask = [self.session downloadTaskWithResumeData:self.resumeData];
+  } else {
+  
+    self.downloadTask = [self.session downloadTaskWithURL:[NSURL URLWithString:self.downloadUrl]];
+  }
+  
   self.downloadStatus = DownloadStatusDoing;
   [self.downloadTask resume];
-  
-  
-}
-
-- (void)goonDownload{
-
-  self.downloadStatus = DownloadStatusDoing;
-  self.downloadTask = [self.session downloadTaskWithResumeData:self.resumeData];
-  
-  [self.downloadTask resume]; // 开始任务
-  
   self.resumeData = nil;
   
 }
@@ -134,7 +128,9 @@
   if (self.finishedBlock) {
     
     self.finishedBlock(self);
+    
   }
+  self.resumeData = nil;
   
 }
 

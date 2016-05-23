@@ -10,4 +10,15 @@
 
 @implementation WaitToDownloadModel
 
+- (DownloadTool *)downloadMP3Tool{
+  
+  if (_downloadMP3Tool == nil) {
+    
+    _downloadMP3Tool = [[DownloadTool alloc]initWithUrl:self.audioUrl andFileName:self.audioName andResumeData:self.audioDownloadResumeData];
+    
+  }
+  return _downloadMP3Tool;
+  
+}
+
 @end

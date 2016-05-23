@@ -72,6 +72,11 @@
   [[AudioCoreDataTool shareInstance] saveAudioEntity:entity succeccBlock:^{
     
     NSLog(@"add audio entity success");
+    if (self.needReload) {
+      self.needReload();
+    }
+    [self.navigationController popViewControllerAnimated:YES];
+    
     
   } andFailedBlock:^(NSString *failedString) {
     
@@ -92,41 +97,6 @@
   }
   
   return _dataDict;
-  
-}
-
-- (void)beganToDownload:(AudioEntity *)audio{
-  
-  DownloadTool * tool = [[DownloadTool alloc]initWithUrl:audio.audioUrl andFileName:audio.audioName];
-  /**
-   audio.audioName = @"发如雪";
-   audio.audioUrl  = @"http://sc.111ttt.com/up/mp3/186020/111C438ED73884CDFF9EC4C687E90C78.mp3";
-   */
-  tool.finishedBlock = ^(DownloadTool * finishedDownloadTool){
-    
-    audio.audioLocalPath = finishedDownloadTool.localPath;
-    
-  };
-  
-  tool.pauseBlock = ^(NSData * resume){
-    
-    audio.audioDownloadResumeData = resume;
-    
-  };
-  
-  tool.downloadingBlock = ^(int64_t alreadyDownload,int64_t totalCount){
-    
-    NSLog(@"progress = %f",(double)alreadyDownload/totalCount);
-    audio.audioDownloadProgress = @((double)alreadyDownload/totalCount);
-    
-  };
-  tool.failedBlock = ^(NSError *error){
-    
-    NSLog(@"error %@",error.localizedDescription);
-    
-  };
-  
-  [tool startDownload];
   
 }
 

@@ -38,13 +38,14 @@
   [self settingNavigation];
   [self setupTableViews];
   
-  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateDataArray) name:kAudioEntityCoreDataChangeNonification object:nil];
+//  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateDataArray) name:kAudioEntityCoreDataChangeNonification object:nil];
   [self updateDataArray];
   
 }
 - (void)updateDataArray{
   
   NSArray * entityArray = [[AudioCoreDataTool shareInstance] fecthAllAudioEntity];
+  [self.dataArray removeAllObjects];
   for (AudioEntity * entity in entityArray) {
     
     WaitToDownloadModel * model = [[WaitToDownloadModel alloc]init];
@@ -67,7 +68,14 @@
 }
 - (void)clickRightButton{
   
+  @weakify(self);
   AddDownloadTaskController * addVC = [[AddDownloadTaskController alloc]init];
+  addVC.needReload = ^(){
+  
+    @strongify(self);
+    [self updateDataArray];
+    
+  };
   [self.navigationController pushViewController:addVC animated:YES];
   
 }
@@ -97,10 +105,80 @@
   }
   
   WaitToDownloadModel * model = self.dataArray[indexPath.row];
-  cell.textLabel.text= [NSString stringWithFormat:@"%@,%@",model.audioName,model.audioDownloadProgress];
+  if (model.audioDownloadProgress == nil) {
+    
+    cell.textLabel.text = model.audioName;
+  } else {
+  
+    cell.textLabel.text= [NSString stringWithFormat:@"%@,%@",model.audioName,model.audioDownloadProgress];
+  
+  }
   cell.detailTextLabel.text = model.audioUrl;
   
   return cell;
+  
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+  
+  WaitToDownloadModel * model = self.dataArray[indexPath.row];
+  if (model.audioDownloadProgress.floatValue != 100) {
+    
+    NSArray * entityArray = [[AudioCoreDataTool shareInstance] fecthAllAudioEntity];
+    
+    AudioEntity * entity = entityArray[indexPath.row];
+    
+    switch (model.downloadMP3Tool.downloadStatus) {
+      case DownloadStatusNotBegan:
+        [model.downloadMP3Tool startDownload];
+        break;
+      case DownloadStatusDoing:
+        [model.downloadMP3Tool pause];
+        break;
+      case DownloadStatusIsPause:
+        [model.downloadMP3Tool startDownload];
+        break;
+      
+      default:
+        break;
+    }
+    @weakify(model);
+    model.downloadMP3Tool.finishedBlock = ^(DownloadTool * finishedDownloadTool){
+      @strongify(model);
+      model.audioLocalPath = finishedDownloadTool.localPath;
+      entity.audioLocalPath = model.audioLocalPath;
+      [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+      [[AudioCoreDataTool shareInstance].managedObjectContext save:nil];
+    };
+    
+    model.downloadMP3Tool.pauseBlock = ^(NSData * resume){
+      @strongify(model);
+      model.audioDownloadResumeData = resume;
+      entity.audioDownloadResumeData=resume;
+      [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+      [[AudioCoreDataTool shareInstance].managedObjectContext save:nil];
+    };
+    
+    model.downloadMP3Tool.downloadingBlock = ^(int64_t alreadyDownload,int64_t totalCount){
+      @strongify(model);
+      
+      model.audioDownloadProgress = [NSString stringWithFormat:@"%.2f\%%",(double)alreadyDownload/totalCount * 100];
+      entity.audioDownloadProgress = model.audioDownloadProgress;
+      [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+      [[AudioCoreDataTool shareInstance].managedObjectContext save:nil];
+      
+    };
+    model.downloadMP3Tool.failedBlock = ^(NSError *error){
+      
+      NSLog(@"error %@",error.localizedDescription);
+      
+    };
+    
+    
+  } else {
+    
+    //播放
+    
+  }
   
   
 }

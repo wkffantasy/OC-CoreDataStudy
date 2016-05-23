@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^SuperContollerNeedReload)();
+
 @interface AddDownloadTaskController : UIViewController
 
-
+@property (copy, nonatomic) SuperContollerNeedReload  needReload;
 
 @end

@@ -26,7 +26,7 @@ typedef void(^DownloadPauseBlock)(NSData * resumeData);
 
 @interface DownloadTool : NSObject
 
-- (instancetype)initWithUrl:(NSString *)downloadUrl andFileName:(NSString *)name;
+- (instancetype)initWithUrl:(NSString *)downloadUrl andFileName:(NSString *)name andResumeData:(NSData *)resumeData;
 
 /**
  *  resumeData记录上一次下载位置
@@ -45,7 +45,6 @@ typedef void(^DownloadPauseBlock)(NSData * resumeData);
 
 - (void)startDownload;//开始下载
 - (void)pause;//暂停
-- (void)goonDownload;//继续下载
 
 
 @end

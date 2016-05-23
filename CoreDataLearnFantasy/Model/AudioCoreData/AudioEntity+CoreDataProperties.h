@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSString *audioLocalPath;
 @property (nullable, nonatomic, retain) NSString *audioName;
 @property (nullable, nonatomic, retain) NSString *audioUrl;
-@property (nullable, nonatomic, retain) NSNumber *audioDownloadProgress;
+@property (nullable, nonatomic, retain) NSString *audioDownloadProgress;
 @property (nullable, nonatomic, retain) NSData   *audioDownloadResumeData;
 
 @end
