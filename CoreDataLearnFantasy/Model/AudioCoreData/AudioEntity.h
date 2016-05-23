@@ -21,8 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface AudioEntity : NSManagedObject
 
 + (NSString *)entityName;
-
-+ (instancetype)setUpNewObject;
++ (instancetype)setupNewOne;
 
 @end
 

@@ -16,7 +16,7 @@
 @property (nonatomic, copy) NSString *audioName;
 @property (nonatomic, copy) NSString *audioUrl;
 @property (nonatomic, copy) NSString *audioDownloadProgress;
-@property (nonatomic, strong) NSData   *audioDownloadResumeData;
+@property (nonatomic, strong) NSData *audioDownloadResumeData;
 
 @property (nonatomic, strong) DownloadTool * downloadMP3Tool;
 

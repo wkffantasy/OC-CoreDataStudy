@@ -25,7 +25,7 @@
   [super viewDidLoad];
   
   self.automaticallyAdjustsScrollViewInsets = NO;
-  
+  self.title = @"第一个test 展示";
   [self setNavigation];
   
   [self setupTableViews];

@@ -38,7 +38,7 @@
 - (void)viewDidLoad{
   
   [super viewDidLoad];
-  
+  self.title = @"第一个test 添加";
   [self setNavigation];
   
   [self setupViews];

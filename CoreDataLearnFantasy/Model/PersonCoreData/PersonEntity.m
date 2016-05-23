@@ -21,15 +21,15 @@
   
 }
 
-+ (instancetype)instanceNewObjectWithContext:(NSManagedObjectContext *)managedObjectContext{
-  
-  return [NSEntityDescription insertNewObjectForEntityForName:[self entityName] inManagedObjectContext:managedObjectContext];
-  
-}
-
 + (instancetype)setUpNewObject{
   
-  return [self instanceNewObjectWithContext:[PersonCoreDataTool shareInstance].managedObjectContext];
+  NSLog(@"first %@",[[PersonCoreDataTool shareInstance] fecthAllPersonEntity]);
+  
+  PersonEntity * entity = [NSEntityDescription insertNewObjectForEntityForName:[PersonEntity entityName] inManagedObjectContext:[PersonCoreDataTool shareInstance].managedObjectContext];
+  
+  NSLog(@"second %@",[[PersonCoreDataTool shareInstance] fecthAllPersonEntity]);
+  
+  return entity;
   
 }
 

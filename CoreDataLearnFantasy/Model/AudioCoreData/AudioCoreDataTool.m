@@ -10,6 +10,7 @@
 
 #import "AudioEntity.h"
 #import "DownloadTool.h"
+#import "AllNonificationNames.h"
 
 @interface AudioCoreDataTool ()<NSFetchedResultsControllerDelegate>
 
@@ -56,8 +57,10 @@
 - (BOOL)isHaveThisAudioEntity:(NSString *)url{
   
   NSArray * allAudioEntity = [self fecthAllAudioEntity];
+  
   for (AudioEntity * entity in allAudioEntity) {
     if ([entity.audioUrl isEqualToString:url]) {
+      NSLog(@"YES %d",YES);
       return YES;
     }
   }
@@ -73,8 +76,7 @@
 #pragma mark - fetchedResultsController代理方法
 - (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath{
   
-  NSLog(@"anObject =%@",anObject);
-  NSLog(@"allObjects %@",self.fetchedResultsController.fetchedObjects);
+  [[NSNotificationCenter defaultCenter] postNotificationName:kAudioEntityCoreDataChangeNonification object:nil];
   
 }
 

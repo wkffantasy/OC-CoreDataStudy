@@ -11,6 +11,7 @@
 
 
 #define kPersonEntityCoreDataChangeNonification @"kPersonEntityCoreDataChangeNonification"
+#define kAudioEntityCoreDataChangeNonification @"kAudioEntityCoreDataChangeNonification"
 
 
 #endif /* AllNonificationNames_h */

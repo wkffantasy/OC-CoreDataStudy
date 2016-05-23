@@ -18,16 +18,11 @@
   return NSStringFromClass([self class]);
   
 }
-
-+ (instancetype)instanceNewObjectWithContext:(NSManagedObjectContext *)managedObjectContext{
++ (instancetype)setupNewOne{
   
-  return [NSEntityDescription insertNewObjectForEntityForName:[self entityName] inManagedObjectContext:managedObjectContext];
+  AudioEntity * entity = [NSEntityDescription insertNewObjectForEntityForName:[AudioEntity entityName] inManagedObjectContext:[AudioCoreDataTool shareInstance].managedObjectContext];
   
-}
-
-+ (instancetype)setUpNewObject{
-  
-  return [self instanceNewObjectWithContext:[AudioCoreDataTool shareInstance].managedObjectContext];
+  return entity;
   
 }
 
