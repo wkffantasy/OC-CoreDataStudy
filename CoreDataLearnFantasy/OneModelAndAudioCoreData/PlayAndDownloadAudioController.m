@@ -1,4 +1,4 @@
-画//
+//
 //  PlayAndDownloadAudioController.m
 //  CoreDataLearnFantasy
 //
@@ -38,7 +38,6 @@
   [self settingNavigation];
   [self setupTableViews];
   
-//  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateDataArray) name:kAudioEntityCoreDataChangeNonification object:nil];
   [self updateDataArray];
   
 }

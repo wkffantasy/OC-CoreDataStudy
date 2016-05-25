@@ -11,14 +11,11 @@
 
 @interface DownloadTool ()<NSURLSessionDownloadDelegate>
 
-
-
 @property (strong, nonatomic) NSURLSessionDownloadTask* downloadTask;
 
 @property (strong, nonatomic) NSURLSession* session;
 
 @property (copy, nonatomic) NSString * filePath;
-
 
 @end
 
@@ -99,6 +96,8 @@
   
 }
 
+
+
 #pragma mark -- NSURLSessionDownloadDelegate
 
 //下载完成
@@ -131,12 +130,14 @@
     
   }
   self.resumeData = nil;
+  [session finishTasksAndInvalidate];
   
 }
 
 //下载中
 - (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didWriteData:(int64_t)bytesWritten totalBytesWritten:(int64_t)totalBytesWritten totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite{
 
+  self.downloadStatus = DownloadStatusDoing;
   if (self.downloadingBlock) {
     self.downloadingBlock(totalBytesWritten,totalBytesExpectedToWrite);
   }
@@ -144,8 +145,6 @@
 }
 //
 - (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didResumeAtOffset:(int64_t)fileOffset expectedTotalBytes:(int64_t)expectedTotalBytes{
-
-  
   
 }
 
